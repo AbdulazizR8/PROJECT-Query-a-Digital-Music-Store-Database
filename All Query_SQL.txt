@@ -1,0 +1,57 @@
+1/
+/*List top 5 Artist who have recorded most Albums*/
+
+SELECT Artist.Name, COUNT(Album.Title) as Total_Album
+FROM Artist
+JOIN Album
+on Artist.ArtistId=Album.ArtistId
+GROUP by Artist.Name
+ORDER by 2 DESC
+LIMIT 5
+
+-----------------
+2/
+/*Referring to the first Question, List Total numbers of Track for each Artist?*/
+
+SELECT Artist.Name, count(Track.Name) Total_of_Track
+FROM Artist
+JOIN Album
+on Artist.ArtistId=Album.ArtistId
+JOIN Track
+on Track.AlbumId=Album.AlbumId
+WHERE Artist.Name In ("Iron Maiden", "Led Zeppelin", "Deep Purple", "Metallica", "U2")
+GROUP by 1
+ORDER by 2 DESC
+
+-----------------
+3/
+/*Referring to the first Question, List the total price of tracks for each Artist?*/
+
+SELECT Artist.Name, sum(Track.UnitPrice) as Price
+FROM Artist
+JOIN Album
+on Artist.ArtistId=Album.ArtistId
+JOIN Track
+on Track.AlbumId=Album.AlbumId
+WHERE Artist.Name In ("Iron Maiden", "Led Zeppelin", "Deep Purple", "Metallica", "U2")
+GROUP by 1
+ORDER by 2 DESC
+
+-----------------
+4/
+/*Referring to the first question, what is the average Milliseconds of a track for the selected Title Albums("A Matter of Life and Death","BBC Sessions [Disc 1] [Live]","MK III The Final Concerts [Disc 1]","Garage Inc. (Disc 1)","Achtung Baby") for each Artist?*/
+
+SELECT Artist.Name, avg(Track.Milliseconds) as Avarge_of_Milliseconds
+FROM Artist
+JOIN Album
+on Artist.ArtistId=Album.ArtistId
+JOIN Track
+on Track.AlbumId=Album.AlbumId
+WHERE Artist.Name In ("Iron Maiden", "Led Zeppelin", "Deep Purple", "Metallica", "U2") 
+and Album.Title In ("A Matter of Life and Death",
+"BBC Sessions [Disc 1] [Live]",
+"MK III The Final Concerts [Disc 1]",
+"Garage Inc. (Disc 1)",
+"Achtung Baby")
+GROUP by 1
+ORDER by 2 DESC

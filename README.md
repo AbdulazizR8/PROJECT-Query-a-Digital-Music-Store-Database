@@ -1,4 +1,4 @@
-PROJECT Query a Digital Music Store Database
+PROJECT: Query a Digital Music Store Database
 
 Introduction
 In this project, you will query the Chinook Database. 
